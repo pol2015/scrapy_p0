@@ -10,9 +10,14 @@ from scrapy.item import Item, Field
 
 
 class P1SampleItem(scrapy.Item):
+#class P1SampleItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    title = Field()
-    link = Field()
+    #title = Field()
+    #link = Field()
+
+    title_url_name = Field()
+    author = Field()
+    price = Field()
     
-pass
+#pass
