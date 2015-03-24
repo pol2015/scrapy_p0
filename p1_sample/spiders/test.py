@@ -10,32 +10,18 @@ from scrapy.shell import inspect_response
 import codecs
 import re
 
-
-
-
-
-
 class MySpider(CrawlSpider):
     name = "p1"
-
-    #allowed_domains = ["inmondadori.it"]
     allowed_domains = ["mondadoristore.it"]
-
-#http://www.mondadoristore.it/libri/italiani/Guide-turistiche-e-Viaggi/genG00D/
-
-    #start_urls = ["http://www.inmondadori.it/libri/italiani/Guide-turistiche-e-Viaggi/genG00D/"]
     start_urls = ["http://www.mondadoristore.it/libri/italiani/Guide-turistiche-e-Viaggi/genG00D/"]
    
     rules =    (
-
     
      Rule(SgmlLinkExtractor(allow='libri/italiani/Guide-turistiche-e-Viaggi/genG00D'),callback='parse_item',follow=True),
-     
-     Rule(SgmlLinkExtractor(allow='libri/italiani/Guide-turistiche-e-Viaggi/genG00D/\d{1,1}'),callback='parse_item',follow=True),
+     Rule(SgmlLinkExtractor(allow='libri/italiani/Guide-turistiche-e-Viaggi/genG00D/\d{1,3}'),callback='parse_item',follow=True),
 
     )
 
-#d{1,3}
 
     def parse_item(self, response,):
         hxs = HtmlXPathSelector(response)
